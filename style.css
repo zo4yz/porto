@@ -119,6 +119,14 @@ nav ul li a {
   left: 8rem;
   margin-bottom: 5rem;
 }
+
+.skills {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
 .skill h1 {
   margin: 0;
   text-align: center;
@@ -126,15 +134,16 @@ nav ul li a {
   margin-bottom: 5rem;
 }
 
-.skill .skills .s1 {
+.s1 {
   display: flex;
+  margin-bottom: 10rem;
   justify-content: center;
   align-items: center;
   height: 100px;
-  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.skill .skills .s2 {
+.s2 {
   width: 180px;
   height: 250px;
   background-color: azure;
@@ -144,42 +153,78 @@ nav ul li a {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
 }
-
-.skill .skills .s2:hover {
+.s2:hover {
   transform: translateY(-10px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.skill .skills .s1 .s2 img {
+.s2 img {
   display: grid;
   margin: 2.5rem;
   width: 100px;
   height: 115px;
   margin-bottom: 3rem;
 }
-.skill .skills .s1 .s2 .desc {
+.s2 .desc {
   text-transform: uppercase;
   font-weight: 500;
   text-align: center;
   position: relative;
-  bottom: 2rem;
+  bottom: 0.5rem;
 }
 
-.skill .skills .s1 .s2 .desc .more-link {
-  text-decoration: underline;
+.more-link {
+  display: inline-block;
+  text-decoration: none;
   background-color: #e1e7ee;
   color: #d77a61;
-  padding: 0.1rem 0.5rem;
-  border-radius: 0.3rem;
-  text-shadow: none;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.skill .skills .s1 .s2 .desc .more-link:hover {
+.more-link:hover {
   background-color: #d77a61;
 }
 
-.skill .skills .s1 .s2 .desc .more-desc {
+.more-desc {
+  max-height: 0; /* Awalnya tersembunyi */
+  overflow: hidden; /* Pastikan teks yang lebih panjang tidak meluap */
+  opacity: 0; /* Deskripsi tidak terlihat */
+  padding: 0;
+  transition: max-height 0.5s ease-out, opacity 0.5s ease-out,
+    padding 0.5s ease-out;
+  background-color: transparent; /* Tidak ada latar belakang awal */
+  position: relative; /* Pastikan tetap berada dalam posisi yang benar */
+  font-size: 10px;
+}
+
+/* Ketika deskripsi diperluas, tampilkan dengan latar belakang putih */
+.more-desc.expanded {
+  max-height: 200px; /* Atur tinggi maksimum */
+  opacity: 1; /* Tampilkan deskripsi */
+  padding: 10px; /* Berikan padding saat diperluas */
+  border-radius: 5px;
+  background-color: azure; /* Latar belakang putih */
+  z-index: 10; /* Pastikan berada di atas konten lain jika perlu */
+}
+/* Tambahkan transisi pada .s2 untuk animasi pergerakan */
+.skill .skills .s2 {
+  width: 180px;
+  height: 250px;
+  background-color: azure;
+  margin: 0.8rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, height 0.3s ease; /* Menambahkan transisi untuk height */
+  text-align: center;
+}
+
+/* Memberikan transisi pada .more-desc untuk animasi diperluas */
+.skill .skills .s2 .more-desc {
   max-height: 0; /* Awalnya tersembunyi */
   overflow: hidden;
   opacity: 0;
@@ -188,21 +233,21 @@ nav ul li a {
     padding 0.5s ease-out; /* Tambahkan transisi untuk opacity dan padding */
 }
 
-.skill .skills .s1 .s2.active .more-desc {
-  max-height: 200px; /* Atur tinggi maksimum saat aktif */
-  opacity: 1; /* Tampilkan elemen */
-  padding: 10px; /* Tambahkan padding saat aktif */
+/* Gaya ketika .more-desc diperluas */
+.skill .skills .s2 .more-desc.expanded {
+  max-height: 200px; /* Tinggi maksimum saat diperluas */
+  opacity: 1; /* Menampilkan konten */
+  padding: 10px; /* Menambahkan padding */
 }
 
 .project {
   position: absolute;
-  top: 75rem;
+  top: 80rem;
   left: 20%;
   max-width: 28rem;
 }
 .project .projects {
   text-align: center;
-  margin-top: 2rem;
 }
 
 .projects h2 {
@@ -233,12 +278,9 @@ nav ul li a {
 }
 
 .project .projects .projects-grid .project-item img {
+  margin-top: 0.5rem;
   width: 80px;
-  height: 150px;
-}
-
-.project .projects .projects-grid .project-item h3 {
-  margin-top: 4rem;
+  height: 80px;
 }
 
 .project .projects .projects-grid .project-item p {
